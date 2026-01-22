@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-app-stack
+  labels:
+    name: my-app-stack
+    env: production
+    team: development
