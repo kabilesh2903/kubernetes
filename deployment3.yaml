@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deploy
+  namespace: my-app-stack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: frontend-deploy
+  template:
+    metadata:
+      labels:
+        name: frontend-deploy
+    spec:
+      containers:
+        - image: sudarshanlnx/farmfresh:v1
+          imagePullPolicy: IfNotPresent
+          name: frontend-cont
+          ports:
+            - containerPort: 80
+              name: cont-port
+              protocol: TCP
+
+
