@@ -14,7 +14,7 @@ spec:
         name: frontend-deploy
     spec:
       containers:
-        - image: sudarshanlnx/farmfresh:v1
+        - image: sudarshanlnx/farmfres:v1
           imagePullPolicy: IfNotPresent
           name: frontend-cont
           ports:
