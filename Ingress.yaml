@@ -21,7 +21,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: react-frontend-lb
+                name: frontend-svc
                 port:
                   number: 80
 
