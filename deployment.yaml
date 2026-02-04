@@ -1,25 +1,28 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: frontend-deploy
+  name: main-ingress
   namespace: my-app-stack
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: frontend-deploy
-  template:
-    metadata:
-      labels:
-        name: frontend-deploy
-    spec:
-      containers:
-        - image: sudarshanlnx/2022sundayweb:v1
-          imagePullPolicy: IfNotPresent
-          name: frontend-cont
-          ports:
-            - containerPort: 80
-              name: cont-port
-              protocol: TCP
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: java-service
+                port:
+                  number: 8080
+                  
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react-frontend-lb
+                port:
+                  number: 80
 
 
